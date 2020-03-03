@@ -92,6 +92,12 @@ export module ClientConfig {
   }
 
   @SubConfigClass()
+  export class UIConfig {
+    @ConfigProperty()
+    darkMode: boolean = false;
+  }
+
+  @SubConfigClass()
   export class OtherConfig {
     @ConfigProperty()
     enableCache: boolean = true;
@@ -159,6 +165,8 @@ export module ClientConfig {
     publicUrl: string = '';
     @ConfigProperty()
     urlBase: string = '';
+    @ConfigProperty()
+    UI: UIConfig = new UIConfig();
     @ConfigProperty()
     Search: SearchConfig = new SearchConfig();
     @ConfigProperty()

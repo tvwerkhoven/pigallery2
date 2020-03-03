@@ -49,6 +49,7 @@ import {CollapseModule} from 'ngx-bootstrap/collapse';
 import {PopoverModule} from 'ngx-bootstrap/popover';
 import {ThumbnailSettingsComponent} from './ui/settings/thumbnail/thumbnail.settings.component';
 import {SearchSettingsComponent} from './ui/settings/search/search.settings.component';
+import {UISettingsComponent} from './ui/settings/ui/ui.settings.component';
 import {SettingsService} from './ui/settings/settings.service';
 import {ShareSettingsComponent} from './ui/settings/share/share.settings.component';
 import {BasicSettingsComponent} from './ui/settings/basic/basic.settings.component';
@@ -93,7 +94,7 @@ import {JobButtonComponent} from './ui/settings/jobs/button/job-button.settings.
 import {ErrorInterceptor} from './model/network/helper/error.interceptor';
 import {CSRFInterceptor} from './model/network/helper/csrf.interceptor';
 import {SettingsEntryComponent} from './ui/settings/_abstract/settings-entry/settings-entry.component';
-
+import {ThemeService} from './theme.service';
 
 @Injectable()
 export class MyHammerConfig extends HammerGestureConfig {
@@ -193,6 +194,7 @@ export function translationsFactory(locale: string) {
     DatabaseSettingsComponent,
     MapSettingsComponent,
     ThumbnailSettingsComponent,
+    UISettingsComponent,
     VideoSettingsComponent,
     PhotoSettingsComponent,
     MetaFileSettingsComponent,
@@ -248,7 +250,8 @@ export function translationsFactory(locale: string) {
       deps: [LOCALE_ID]
     },
     {provide: TRANSLATIONS_FORMAT, useValue: 'xlf'},
-    I18n
+    I18n,
+    ThemeService
   ],
   bootstrap: [AppComponent]
 })

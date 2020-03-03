@@ -6,6 +6,23 @@
   margin-left: 10px;
 }
 
+.card {
+  background-color: transparent;
+}
+
+.card-header {
+  color: var(--text-color-secondary);
+  background-color: var(--background-color-secondary);
+}
+
+.form-control {
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+table {
+  color: var(--text-color);
+}
 
 .switch-wrapper {
   display: inline-block;

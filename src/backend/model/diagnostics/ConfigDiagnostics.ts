@@ -221,6 +221,9 @@ export class ConfigDiagnostics {
     }
   }
 
+  static async testUIConfig(uiConfig: ClientConfig.UIConfig) {
+
+  }
 
   static async runDiagnostics() {
 
@@ -360,6 +363,13 @@ export class ConfigDiagnostics {
       Config.Client.Map.mapProvider = ClientConfig.MapProviders.OpenStreetMap;
     }
 
+    try {
+      await ConfigDiagnostics.testUIConfig(Config.Client.UI);
+    } catch (ex) {
+      const err: Error = ex;
+      NotificationManager.error('User Interface settings error', err.toString());
+      Logger.error(LOG_TAG, 'UI settings error', err.toString());
+    }
   }
 
 }
