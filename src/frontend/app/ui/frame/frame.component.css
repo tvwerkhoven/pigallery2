@@ -6,6 +6,10 @@ nav {
   margin-bottom: 20px;
 }
 
+button {
+  border: none;
+}
+
 ng2-slim-loading-bar {
   /* display: block; */
   z-index: 999999;
@@ -69,6 +73,19 @@ app-language {
   padding-left: 1.0rem;
 }
 
+.dropdown-menu {
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+.dropdown-item {
+  color: var(--text-color);
+}
+
+.dropdown-item:hover {
+  color: var(--text-color-secondary);
+  background-color: var(--background-color-secondary);
+}
 
 a.dropdown-item, button.dropdown-item {
   padding: 0.3rem 1.0rem 0.3rem 0.8rem;

@@ -10,14 +10,18 @@
   background-color: transparent;
 }
 
-.card-header {
+.form-control, .card-body {
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+.card-header, .input-group-text, .alert-secondary {
   color: var(--text-color-secondary);
   background-color: var(--background-color-secondary);
 }
 
-.form-control {
-  color: var(--text-color);
-  background-color: var(--background-color);
+.text-secondary {
+  color: var(--text-color-secondary);
 }
 
 table {

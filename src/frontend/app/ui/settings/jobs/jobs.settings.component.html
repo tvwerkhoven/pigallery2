@@ -7,7 +7,7 @@
       <div [hidden]="!error" class="alert alert-danger" role="alert"><strong>Error: </strong>{{error}}</div>
 
       <div *ngFor="let schedule of sortedSchedules() as schedules; let i= index">
-        <div class="card bg-light {{shouldIdent(schedule,schedules[i-1])? 'ml-4' : ''}}">
+        <div class="card {{shouldIdent(schedule,schedules[i-1])? 'ml-4' : ''}}">
           <div class="card-header">
             <div class="d-flex justify-content-between">
               <div class="clickable"

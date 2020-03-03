@@ -1,12 +1,12 @@
 <div class="dropdown" dropdown>
   <button dropdownToggle
-          class="btn btn-secondary dropdown-toggle"
+          class="btn dropdown-toggle p-2"
           type="button"
           id="language"
           data-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="true"
-          [ngClass]="isDark?'dark':''">
+          [ngClass]="isDark?'btn-dark':'btn-secondary'">
     <ng-container *ngIf="current != null">
       {{current}}
     </ng-container>

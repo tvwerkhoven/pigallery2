@@ -8,7 +8,8 @@ import {BackendtextService} from '../../../../model/backendtext.service';
 @Component({
   selector: 'app-settings-job-progress',
   templateUrl: './job-progress.settings.component.html',
-  styleUrls: ['./job-progress.settings.component.css']
+  styleUrls: ['./job-progress.settings.component.css',
+    '../../_abstract/abstract.settings.component.css']
 })
 export class JobProgressComponent implements OnDestroy, OnChanges {
 

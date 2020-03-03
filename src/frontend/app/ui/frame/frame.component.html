@@ -1,5 +1,5 @@
 <ng2-slim-loading-bar color="#337ab7" height="3px"></ng2-slim-loading-bar>
-<nav class="navbar  navbar-dark bg-dark  navbar-expand-md">
+<nav class="navbar navbar-dark bg-dark navbar-expand-md">
   <a class="navbar-brand" [routerLink]="['/gallery','/']"
      [queryParams]="queryService.getParams()">
     <img src="assets/icon_inv.png" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -25,17 +25,17 @@
       <ng-content select="[navbar]"></ng-content>
       <li class="nav-item divider-vertical">
       </li>
-      <li class="nav-item mr-2 ml-2" *ngIf="authenticationRequired" style=" white-space: nowrap;">
-        <span class="navbar-text" *ngIf="user.value">
+      <li class="nav-item" *ngIf="authenticationRequired" style=" white-space: nowrap;">
+        <span class="navbar-text p-2" *ngIf="user.value">
           <span class="oi oi-person"></span> {{user.value.name}}</span>
       </li>
-      <li class="nav-item ml-2">
-        <app-language class="navbar-btn" isDark="true"></app-language>
+      <li class="nav-item">
+        <app-language isDark="true"></app-language>
       </li>
-      <div class="btn-group" dropdown placement="bottom"
+      <li class="nav-item" dropdown placement="bottom"
            *ngIf="isAdmin() || authenticationRequired">
         <button id="button-alignment" dropdownToggle
-                type="button" class="btn btn-dark dropdown-toggle"
+                type="button" class="btn btn-dark dropdown-toggle p-2"
                 aria-controls="dropdown-alignment">
           <span class="oi oi-menu"></span>
           <span *ngIf="isAdmin() && notificationService.notifications.length>0"
@@ -66,12 +66,10 @@
             </button>
           </li>
         </ul>
-      </div>
+      </li>
 
 
     </ul>
-
-
   </div><!--/.nav-collapse -->
 
 </nav>

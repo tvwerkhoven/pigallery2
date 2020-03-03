@@ -2,6 +2,11 @@
   z-index: 9999;
 }
 
+.form-control {
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
 .full-width {
   width: 100%;
 }
@@ -11,6 +16,7 @@
   padding-bottom: 1px;
 }
 
-#shareButton span{
-  padding-right: 0.3rem;
+button.nav-link {
+  border: none;
+  color: var(--light) !important;
 }

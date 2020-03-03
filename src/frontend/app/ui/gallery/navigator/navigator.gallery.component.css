@@ -13,9 +13,22 @@
   display: inline-block;
 }
 
+a {
+  color: var(--primary);
+}
+
+.breadcrumb {
+  color: var(--text-color-secondary);
+  background-color: var(--background-color-secondary);
+}
+
+.breadcrumb-item::before {
+      color: var(--divider-color);
+}
+
 .divider{
   margin: 5px 10px;
-  border-left: 1px solid #6c757d;
+  border-left: 1px solid var(--divider-color);
   display: inline-block;
 }
 
@@ -25,6 +38,17 @@ ol {
 
 .dropdown-menu {
   min-width: 10rem;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+.dropdown-item {
+  color: var(--text-color);
+}
+
+.dropdown-item:hover {
+  color: var(--text-color-secondary);
+  background-color: var(--background-color-secondary);
 }
 
 .row {
