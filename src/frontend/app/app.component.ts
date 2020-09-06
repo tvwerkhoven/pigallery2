@@ -7,6 +7,7 @@ import {ShareService} from './ui/gallery/share.service';
 import 'hammerjs';
 import {Subscription} from 'rxjs';
 import {QueryParams} from '../../common/QueryParams';
+import {ThemeService} from './theme.service';
 
 @Component({
   selector: 'app-pi-gallery2',
@@ -20,11 +21,17 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(private _router: Router,
               private _authenticationService: AuthenticationService,
               private _shareService: ShareService,
-              private  _title: Title) {
+              private  _title: Title,
+              private _themeService: ThemeService) {
   }
 
   async ngOnInit() {
     this._title.setTitle(Config.Client.applicationTitle);
+    if (Config.Client.UI.darkMode) {
+      this._themeService.setThemeDark();
+    } else {
+      this._themeService.setThemeLight();
+    }
     await this._shareService.wait();
     this.subscription = this._authenticationService.user.subscribe(() => {
       if (this._authenticationService.isAuthenticated()) {

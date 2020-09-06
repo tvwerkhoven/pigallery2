@@ -6,6 +6,27 @@
   margin-left: 10px;
 }
 
+.card {
+  background-color: transparent;
+}
+
+.form-control, .card-body {
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+.card-header, .input-group-text, .alert-secondary {
+  color: var(--text-color-secondary);
+  background-color: var(--background-color-secondary);
+}
+
+.text-secondary {
+  color: var(--text-color-secondary);
+}
+
+table {
+  color: var(--text-color);
+}
 
 .switch-wrapper {
   display: inline-block;

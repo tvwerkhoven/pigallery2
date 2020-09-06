@@ -110,6 +110,12 @@ export class SettingsRouter {
       SettingsMWs.updateJobSettings,
       RenderingMWs.renderOK
     );
+    app.put('/api/settings/ui',
+      AuthenticationMWs.authenticate,
+      AuthenticationMWs.authorise(UserRoles.Admin),
+      SettingsMWs.updateUISettings,
+      RenderingMWs.renderOK
+    );
   }
 
 

@@ -25,3 +25,13 @@ button.dropdown-item {
 button.dropdown-item span{
   padding-right: 0.8rem;
 }
+
+.dropdown-item {
+  color: var(--text-color);
+}
+
+.dropdown-item:hover {
+  color: var(--text-color-secondary);
+  background-color: var(--background-color-secondary);
+}
+

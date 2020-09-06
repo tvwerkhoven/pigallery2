@@ -7,7 +7,8 @@ import {propertyTypes} from 'typeconfig/common';
 @Component({
   selector: 'app-settings-entry',
   templateUrl: './settings-entry.component.html',
-  styleUrls: ['./settings-entry.settings.component.css'],
+  styleUrls: ['./settings-entry.settings.component.css',
+    '../abstract.settings.component.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
