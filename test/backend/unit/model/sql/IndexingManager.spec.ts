@@ -19,6 +19,8 @@ import {ProjectPath} from '../../../../../src/backend/ProjectPath';
 import * as path from 'path';
 import {DiskManager} from '../../../../../src/backend/model/DiskManger';
 import {AlbumManager} from '../../../../../src/backend/model/database/sql/AlbumManager';
+import {MediaEntity} from '../../../../../src/backend/model/database/sql/enitites/MediaEntity';
+import {FaceRegionEntry} from '../../../../../src/backend/model/database/sql/enitites/FaceRegionEntry';
 
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
@@ -591,18 +593,23 @@ describe('IndexingManager', (sqlHelper: DBTestHelper) => {
       const am = new AlbumManager();
 
       const dir = await DiskManager.scanDirectory('/');
+      console.log(dir);
 
       await im.saveToDB(dir);
 
       const albums = await am.getAlbums();
-    //  expect(albums[0].preview).to.be.an('object');
+      console.log(albums);
+      console.log(await (await SQLConnection.getConnection()).getRepository(MediaEntity).find());
+      console.log(await (await SQLConnection.getConnection()).getRepository(FaceRegionEntry).find());
+      expect(albums[0].preview).to.be.an('object');
       delete albums[0].preview;
-      delete albums[0].count;
+      //  delete albums[0].count;
       expect(albums).to.be.equalInAnyOrder([
         {
           id: 1,
           name: 'Alvin',
           locked: true,
+          count: 1,
           searchQuery: {
             type: SearchQueryTypes.person,
             text: 'Alvin',
