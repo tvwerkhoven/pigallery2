@@ -119,6 +119,7 @@ export class DBTestHelper {
   }
 
   public async initDB(): Promise<void> {
+    await Config.load();
     if (this.dbType === DatabaseType.sqlite) {
       await this.initSQLite();
     } else if (this.dbType === DatabaseType.mysql) {
