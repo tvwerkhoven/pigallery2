@@ -587,6 +587,7 @@ describe('IndexingManager', (sqlHelper: DBTestHelper) => {
     it('.saved_searches.pg2conf', async () => {
       Config.Server.Threading.enabled = false;
       Config.Client.Album.enabled = true;
+      Config.Client.Faces.enabled = true;
 
       Config.Server.Media.folder = path.join(__dirname, '/../../../assets');
       ProjectPath.ImageFolder = path.join(__dirname, '/../../../assets');
