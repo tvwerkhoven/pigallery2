@@ -21,6 +21,7 @@ import {DiskManager} from '../../../../../src/backend/model/DiskManger';
 import {AlbumManager} from '../../../../../src/backend/model/database/sql/AlbumManager';
 import {MediaEntity} from '../../../../../src/backend/model/database/sql/enitites/MediaEntity';
 import {FaceRegionEntry} from '../../../../../src/backend/model/database/sql/enitites/FaceRegionEntry';
+import {PhotoDTO} from '../../../../../src/common/entities/PhotoDTO';
 
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
@@ -594,6 +595,7 @@ describe('IndexingManager', (sqlHelper: DBTestHelper) => {
 
       const dir = await DiskManager.scanDirectory('/');
       console.log(dir);
+      console.log(dir.media.map(m => (m as PhotoDTO).metadata.faces));
 
       await im.saveToDB(dir);
 
