@@ -594,6 +594,7 @@ describe('IndexingManager', (sqlHelper: DBTestHelper) => {
       const am = new AlbumManager();
 
       const dir = await DiskManager.scanDirectory('/');
+      console.log(JSON.stringify(Config, null, 4));
       console.log(dir);
       console.log(dir.media.map(m => (m as PhotoDTO).metadata.faces));
 
