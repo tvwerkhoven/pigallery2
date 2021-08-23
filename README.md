@@ -226,13 +226,37 @@ apt-get install build-essential  libkrb5-dev gcc g++
   I also try to implement some of the feature requests that have a lots of 'likes' (i.e.: `+1`-s or thumbs ups) on it.
   If you have a feature that you really would like to happen, I welcome contributions to the app. See [CONTRIBUTING.md](https://github.com/bpatrik/pigallery2/blob/master/CONTRIBUTING.md) for more details.
 
-## 5. Known errors
+## 5. Recovering admin access
+
+In case you lose your admin password, the only way to recover access is modifying the sqlite database. Follow these instructions to do so.
+
+pigallery2 uses [version `$2b$`](https://en.wikipedia.org/wiki/Bcrypt#Versioning_history) of the [bcrypt hash function](https://en.wikipedia.org/wiki/Bcrypt) with difficulty 9 using the [npm library](https://www.npmjs.com/package/bcrypt), implemented in [`PasswordHelper.ts`](https://github.com/bpatrik/pigallery2/blob/24942b2ee1a2de01048c1aa053d7b68a28b73d37/src/backend/model/PasswordHelper.ts).
+
+First compute your password's bcrypt hash (source [here](https://unix.stackexchange.com/questions/307994/compute-bcrypt-hash-from-command-line) and [here](https://www.ask-sheldon.com/create-a-bcrypt-hash-on-commandline/)):
+
+	htpasswd -bnBC 9 "" helloworld
+  
+which generates something like:
+
+  :$2y$09$SF8FOnMkfM8nnynMzrhT8OEYXRCPOCvQo43mzcGimyhrO0eWhAWcG
+
+Open the sqlite database as root:
+
+	sudo sqlite3 db-data/sqlite.db
+
+Update password of specific user in the `user_entity` table using the hash made previously. Remove the ':' at the start, and be sure to set the first 4 characters to '$2b$':
+
+	UPDATE user_entity
+	SET password = '$2b$09$SF8FOnMkfM8nnynMzrhT8OEYXRCPOCvQo43mzcGimyhrO0eWhAWcG'
+	WHERE name = '<username>';
+
+## 6. Known errors
 * IOS map issue
   * Map on IOS prevents using the buttons in the image preview navigation, see #155
 * Video support on weak servers (like raspberry pi) with low upload rate
   * video playback may use up too much resources and the server might not response for a while. Enable video transcoding in the app, to transcode the videos to lover bitrate. 
   
-## 6. Credits
+## 7. Credits
 Crossbrowser testing sponsored by [Browser Stack](https://www.browserstack.com)
 [<img src="https://camo.githubusercontent.com/a7b268f2785656ab3ca7b1cbb1633ee5affceb8f/68747470733a2f2f64677a6f7139623561736a67312e636c6f756466726f6e742e6e65742f70726f64756374696f6e2f696d616765732f6c61796f75742f6c6f676f2d6865616465722e706e67" alt="Browser Stack" height="31px" style="background: cornflowerblue;">](https://www.browserstack.com)
 
